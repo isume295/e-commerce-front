@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/Asset 2.svg';
+import logo from '../../assets/Asset 2.svg';
 import { IoSearch } from 'react-icons/io5';
 import { MdOutlinePersonOutline } from 'react-icons/md';
 import { MdOutlineShoppingCart } from 'react-icons/md';
@@ -10,7 +10,7 @@ import { Navigations } from './Navigations';
 
 export const Navbar = () => {
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col sticky z-30 top-0 bg-white">
             <div className="h-20 w-full px-12 flex justify-between items-center">
                 <div className="w-14 h-full flex gap-2">
                     <img src={logo} alt="logo" />

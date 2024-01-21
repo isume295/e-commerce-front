@@ -25,7 +25,7 @@ const links = [
     },
     {
         id: 3,
-        name: 'About',
+        name: 'About Us',
         path: '/about',
     },
     {
