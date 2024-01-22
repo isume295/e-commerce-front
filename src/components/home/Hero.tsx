@@ -5,7 +5,12 @@ import 'swiper/css/autoplay';
 import 'swiper/css/effect-fade';
 import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 
-const images = [
+type ObjectType = {
+    title: string;
+    src: string;
+};
+
+const images: ObjectType[] = [
     {
         title: ' Maximize Business Success: Discover Powerful Consulting Services',
         src: 'https://www.kotak.com/content/dam/Kotak/product_card_images/how-credit-cards-enhance-your-shopping-experience.jpg',
@@ -24,30 +29,14 @@ const images = [
 
 export const Hero = () => {
     return (
-        <div className="">
-            {/* <Swiper modules={[Autoplay, Pagination, Navigation, EffectFade]} slidesPerView={1} loop autoplay={true} speed={1500}>
-                <SwiperSlide>
-                    <div
-                        className="h-screen
-                     bg-red-400"
-                    >
-                        slide 1
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div>slide 2</div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div>slide 3</div>
-                </SwiperSlide>
-            </Swiper> */}
+        <div>
             <Swiper modules={[Autoplay, Pagination, Navigation, EffectFade]} slidesPerView={1} loop autoplay={true} speed={1500}>
                 {images.map((image) => (
                     <SwiperSlide key={image.title}>
                         <header className="">
                             <div className="flex w-full px-5 py-6">
                                 <div
-                                    className="flex items-center justify-start w-full h-96 bg-green-100 md:w-12/12 relative"
+                                    className="flex items-center justify-start w-full h-[70vh] bg-green-100 md:w-12/12 relative"
                                     style={{
                                         backgroundImage: `url(${image.src})`,
                                         backgroundSize: 'cover',

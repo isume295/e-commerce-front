@@ -1,14 +1,14 @@
 import React from 'react';
-import { Navbar } from '../components/navigation/Navbar';
-import { Header } from '../components/navigation/Header';
 import { Hero } from '../components/home/Hero';
+import { Category } from '../components/home/Category';
+import { Womens } from '../components/home/Womens';
 
 export const Home = () => {
     return (
         <div>
-            {/* <Header />
-            <Navbar /> */}
             <Hero />
+            <Category />
+            <Womens />
         </div>
     );
 };
