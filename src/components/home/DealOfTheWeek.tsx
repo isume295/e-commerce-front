@@ -1,18 +1,6 @@
 import React from 'react';
-// import { useState, useEffect, useRef } from 'react';
 
 export const DealOfTheWeek = () => {
-    // const TimerComponent: React.FC = () => {
-    //   const [day, setDay] = useState<string>('00');
-    //   const [hour, setHour] = useState<string>('00');
-    //   const [min, setMin] = useState<string>('00');
-    //   const [sec, setSec] = useState<string>('00');
-
-    //    const interval = useRef<NodeJS.Timeout>();
-    //     const setTimer = (month: string, dayy: string, year: string) => {
-
-    //     }
-
     return (
         <div className="flex px-12 pt-6 w-full h-screen">
             <div className="flex py-6 w-full justify-center items-center h-9/12 bg-[#F4F1E9]">
@@ -55,7 +43,7 @@ export const DealOfTheWeek = () => {
                     </div>
                 </div>
                 <div className="w-6/12 flex justify-center items-center">
-                    <h1>image</h1>
+                    <img className="w-8/12 h-8/12" src="https://www.kotak.com/content/dam/Kotak/product_card_images/how-credit-cards-enhance-your-shopping-experience.jpg" alt="img" />
                 </div>
             </div>
         </div>

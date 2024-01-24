@@ -1,4 +1,14 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
+import { MdFavoriteBorder } from 'react-icons/md';
+import { GiShoppingBag } from 'react-icons/gi';
+import { FaShuffle } from 'react-icons/fa6';
 import { Slider } from './Slider';
 
 type ObjectType = {
@@ -29,21 +39,10 @@ const images: ObjectType[] = [
     },
 ];
 
-export const Womens = () => {
+export const Mens = () => {
     return (
         <div>
             <div className="flex gap-10 py-6 w-full px-12 h-[100vh]">
-                <div
-                    className="w-[30%] flex flex-col justify-center items-center bg-green-400 h-full"
-                    style={{
-                        backgroundImage: `url(https://media.istockphoto.com/id/1307217813/photo/they-wouldnt-want-to-spend-their-day-any-other-way.jpg?s=612x612&w=0&k=20&c=1Us5Oo9tJ5n3lgO5V_aZ8ftqlfFPwo7JLdExcZ4d-bI=)`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                    }}
-                >
-                    <h1 className="font-raleway text-5xl text-white font-extrabold">Women's</h1>
-                    <span className=" text-white underline font-bold">Discover more</span>
-                </div>
                 <div className="w-[70%]  flex flex-col justify-center items-center h-full">
                     <div className="flex justify-center gap-4 pb-6 items-center">
                         <span className="border-b-4 border-mainColor p-2 text-lg">Clothings</span>
@@ -55,6 +54,17 @@ export const Womens = () => {
                     <div className="w-full">
                         <Slider images={images} />
                     </div>
+                </div>
+                <div
+                    className="w-[30%] flex flex-col justify-center items-center bg-green-400 h-full"
+                    style={{
+                        backgroundImage: `url(https://media.istockphoto.com/id/1307217813/photo/they-wouldnt-want-to-spend-their-day-any-other-way.jpg?s=612x612&w=0&k=20&c=1Us5Oo9tJ5n3lgO5V_aZ8ftqlfFPwo7JLdExcZ4d-bI=)`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                    }}
+                >
+                    <h1 className="font-raleway text-5xl text-white font-extrabold">Women's</h1>
+                    <span className=" text-white underline font-bold">Discover more</span>
                 </div>
             </div>
         </div>
