@@ -4,6 +4,7 @@ import { Category } from '../components/home/Category';
 import { Womens } from '../components/home/Womens';
 import { DealOfTheWeek } from '../components/home/DealOfTheWeek';
 import { Mens } from '../components/home/Mens';
+import { Shipping } from '../components/home/Shipping';
 
 export const Home = () => {
     return (
@@ -13,6 +14,7 @@ export const Home = () => {
             <Womens />
             <DealOfTheWeek />
             <Mens />
+            <Shipping />
         </div>
     );
 };

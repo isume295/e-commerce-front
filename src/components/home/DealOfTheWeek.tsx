@@ -2,7 +2,7 @@ import React from 'react';
 
 export const DealOfTheWeek = () => {
     return (
-        <div className="flex px-12 pt-6 w-full h-screen">
+        <div className="flex px-12 my-10 w-full h-screen">
             <div className="flex py-6 w-full justify-center items-center h-9/12 bg-[#F4F1E9]">
                 <div className="w-6/12">
                     <div className="flex flex-col px-6 items-center justify-center w-full md:flex-row  ">
@@ -16,7 +16,7 @@ export const DealOfTheWeek = () => {
                             <p className="text-gray-700 mt-2">
                                 <span className="font-bold text-mainColor text-2xl">$35.00</span>/ handBag
                             </p>
-                            <div className="flex gap-4 mt-6">
+                            <div className="flex gap-8 mt-6">
                                 <div className=" flex font-raleway flex-col px-3 py-2 justify-center items-center bg-white rounded-md">
                                     <span className="text-4xl font-bold text-mainColor">00</span>
                                     <span className="text-xl text-gray-400">DAYS</span>
