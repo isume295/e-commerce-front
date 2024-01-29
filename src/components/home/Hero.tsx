@@ -29,7 +29,7 @@ const images: ObjectType[] = [
 
 export const Hero = () => {
     return (
-        <div>
+        <div className=" relative z-10">
             <Swiper modules={[Autoplay, Pagination, Navigation, EffectFade]} slidesPerView={1} loop autoplay={true} speed={1500}>
                 {images.map((image) => (
                     <SwiperSlide key={image.title}>

@@ -43,7 +43,7 @@ export const Slider: React.FC<SliderProps> = ({ images }) => {
                                         <GiShoppingBag />
                                     </div>
                                     <div className="bg-white h-12 flex justify-center items-center text-lg font-bold font-raleway px-2 py-2 text-customDark">
-                                        <span>+ Quick View</span>
+                                        <button>+ Quick View</button>
                                     </div>
                                     <div className="bg-white flex justify-center items-center h-12 text-2xl px-2 py-2 text-customDark">
                                         <FaShuffle />

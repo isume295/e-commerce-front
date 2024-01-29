@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Slider } from './Slider';
+import { QuickView } from './QuickView';
 
 type ObjectType = {
     title: string;
@@ -30,8 +31,9 @@ const images: ObjectType[] = [
 ];
 
 export const Womens = () => {
+    let show = false;
     return (
-        <div>
+        <div className=" w-full h-[100vh] bg-slate-500 z-10 relative">
             <div className="flex gap-10 py-6 w-full px-12 h-[100vh]">
                 <div
                     className="w-[30%] flex flex-col justify-center items-center bg-green-400 h-full"
@@ -57,6 +59,7 @@ export const Womens = () => {
                     </div>
                 </div>
             </div>
+            {/* <QuickView /> */}
         </div>
     );
 };

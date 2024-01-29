@@ -40,6 +40,8 @@ const images: ObjectType[] = [
 ];
 
 export const Mens = () => {
+    let show = false;
+
     return (
         <div>
             <div className="flex gap-10 py-6 w-full px-12 h-[100vh]">

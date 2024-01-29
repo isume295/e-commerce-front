@@ -10,7 +10,7 @@ import { Navigations } from './Navigations';
 
 export const Navbar = () => {
     return (
-        <div className="flex flex-col sticky z-30 top-0 bg-white">
+        <div className="flex flex-col sticky z-40 top-0 bg-white">
             <div className="h-20 w-full px-12 flex justify-between items-center">
                 <div className="w-14 h-full flex gap-2">
                     <img src={logo} alt="logo" />
