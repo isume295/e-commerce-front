@@ -23,7 +23,7 @@ const renderSlice = createSlice({
         showItem: (state) => {
             state.showQuickView = true;
         },
-        hideItem: (state, action) => {
+        hideItem: (state) => {
             state.showQuickView = false;
             // state.albums = action.payload;
         },

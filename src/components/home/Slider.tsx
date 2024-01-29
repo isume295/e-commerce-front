@@ -9,6 +9,8 @@ import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 import { MdFavoriteBorder } from 'react-icons/md';
 import { GiShoppingBag } from 'react-icons/gi';
 import { FaShuffle } from 'react-icons/fa6';
+import { useAppDispatch } from '../../redux/hooks';
+import { showItem } from '../../redux/RenderSlice';
 
 type ObjectType = {
     title: string;
@@ -20,6 +22,15 @@ type SliderProps = {
 };
 
 export const Slider: React.FC<SliderProps> = ({ images }) => {
+    const dispatch = useAppDispatch();
+    const handleView = () => {
+        try {
+            dispatch(showItem());
+            console.log('view is updated');
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <Swiper modules={[Autoplay, Pagination, Navigation, EffectFade]} slidesPerView={3} loop autoplay={true} pagination={{ clickable: true }} speed={1500}>
             {images.map((image: any) => (
@@ -42,9 +53,9 @@ export const Slider: React.FC<SliderProps> = ({ images }) => {
                                     <div className="bg-mainColor flex justify-center items-center h-12 text-2xl px-2 py-2 text-white">
                                         <GiShoppingBag />
                                     </div>
-                                    <div className="bg-white h-12 flex justify-center items-center text-lg font-bold font-raleway px-2 py-2 text-customDark">
-                                        <button>+ Quick View</button>
-                                    </div>
+                                    <button onClick={handleView} className="bg-white h-12 flex justify-center items-center text-lg font-bold font-raleway px-2 py-2 text-customDark">
+                                        + Quick View
+                                    </button>
                                     <div className="bg-white flex justify-center items-center h-12 text-2xl px-2 py-2 text-customDark">
                                         <FaShuffle />
                                     </div>

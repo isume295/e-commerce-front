@@ -1,8 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import renderReducer from './RenderSlice';
 
 const store = configureStore({
-    reducer: {},
+    reducer: {
+        render: renderReducer,
+    },
 });
+
+export const renderSelector = (state: RootState) => state.render;
 
 export default store;
 export type AppDispatch = typeof store.dispatch;
