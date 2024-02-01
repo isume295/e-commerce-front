@@ -84,6 +84,7 @@ export const SignUp = () => {
                             <Form>
                                 <div className="mt-4">
                                     <Field
+                                        type="text"
                                         id="name"
                                         name="name"
                                         placeholder="Full Name"
@@ -93,6 +94,7 @@ export const SignUp = () => {
                                 </div>
                                 <div className="mt-4">
                                     <Field
+                                        type="email"
                                         id="email"
                                         name="email"
                                         placeholder="Email Address"
@@ -102,6 +104,7 @@ export const SignUp = () => {
                                 </div>
                                 <div className="mt-4">
                                     <Field
+                                        type="password"
                                         id="password"
                                         name="password"
                                         placeholder="Password"
@@ -111,6 +114,7 @@ export const SignUp = () => {
                                 </div>
                                 <div className="mt-4">
                                     <Field
+                                        type="password"
                                         id="confirm"
                                         name="confirm"
                                         placeholder="Confirm Password"

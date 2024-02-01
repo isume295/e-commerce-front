@@ -79,6 +79,7 @@ export const Login = () => {
                                 <div className="mt-4">
                                     <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
                                     <Field
+                                        type="email"
                                         id="email"
                                         name="email"
                                         placeholder=""
@@ -94,6 +95,7 @@ export const Login = () => {
                                         </a>
                                     </div>
                                     <Field
+                                        type="password"
                                         id="password"
                                         name="password"
                                         placeholder=""
