@@ -2,9 +2,6 @@ import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
-// import { Header } from './components/navigation/Header';
-// import { Navbar } from './components/navigation/Navbar';
-// import { Footer } from './components/footer/Footer';
 import { Login } from './pages/Login';
 import { Layout } from './components/layout/Layout';
 import { SignUp } from './pages/SignUp';
@@ -16,6 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route path="/" element={<Home />} />
+                    {/* here we will hav our private routes if the token is not in our store the it will redirect to login page implement this when u do the authentication */}
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />

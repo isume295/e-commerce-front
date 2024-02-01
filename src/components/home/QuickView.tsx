@@ -25,7 +25,7 @@ export const QuickView = () => {
         // >
         <div
             className={`h-screen w-[40%] z-50 fixed top-0 right-0 opacity-0 border bg-white transform translate-x-full ${
-                showQuickView ? 'opacity-100 translate-x-[-100]' : ''
+                showQuickView ? 'opacity-100 translate-x-[-0%]' : ''
             } transition-all duration-200 flex flex-col items-center gap-4 overflow-y-scroll overflow-x-hidden`}
         >
             <div className=" flex items-center justify-between w-full">
