@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// type Album = {
-//     album: string;
-//     songCount: number;
-// };
-
 type InitialState = {
     showQuickView: boolean;
     errMsg: any;
@@ -22,6 +17,7 @@ const renderSlice = createSlice({
     reducers: {
         showItem: (state) => {
             state.showQuickView = true;
+            console.log('showItem', state.showQuickView);
         },
         hideItem: (state) => {
             state.showQuickView = false;

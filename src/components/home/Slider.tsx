@@ -35,7 +35,7 @@ export const Slider: React.FC<SliderProps> = ({ images }) => {
         <Swiper modules={[Autoplay, Pagination, Navigation, EffectFade]} slidesPerView={3} loop autoplay={true} pagination={{ clickable: true }} speed={1500}>
             {images.map((image: any) => (
                 <SwiperSlide key={image.src}>
-                    <div className="flex w-full h-96">
+                    <div className="flex bg-green-200 w-full h-96">
                         <div className="flex  w-full px-2 pb-12 justify-center items-center ">
                             <div
                                 className="h-full w-full flex justify-center items-center relative group"
