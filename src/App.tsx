@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Layout } from './components/layout/Layout';
 import { SignUp } from './pages/SignUp';
+import { ForgotPassword } from './pages/ForgotPassword';
 
 function App() {
     return (
@@ -18,6 +19,8 @@ function App() {
                 </Route>
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="*" element={<h1>Not Found</h1>} />
             </Routes>
         </>
     );

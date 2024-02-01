@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required'),
@@ -90,9 +91,9 @@ export const Login = () => {
                                 <div className="mt-4">
                                     <div className="flex justify-between">
                                         <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                                        <a href="#j" className="text-xs text-gray-500">
+                                        <Link to="/forget-password" className="text-xs text-gray-500">
                                             Forget Password?
-                                        </a>
+                                        </Link>
                                     </div>
                                     <Field
                                         type="password"
@@ -113,9 +114,9 @@ export const Login = () => {
 
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 md:w-1/4"></span>
-                            <a href="#r" className="text-xs text-gray-500 uppercase">
+                            <Link to="/login" className="text-xs text-gray-500 uppercase">
                                 or sign up
-                            </a>
+                            </Link>
                             <span className="border-b w-1/5 md:w-1/4"></span>
                         </div>
                     </div>
