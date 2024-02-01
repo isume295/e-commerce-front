@@ -1,34 +1,68 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useRegisterMutation } from '../redux/auth/authApiSlice';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthResponse } from '../types/authresponse';
+import { ApiResponse } from '../types/api_response';
+import { setCredentials } from '../redux/auth/authSlice';
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required('name is required'),
+    fullname: Yup.string().required('full name is required'),
+    username: Yup.string().required('user name is required'),
     email: Yup.string().required('Email is required'),
     password: Yup.string().required('Password is required'),
     confirm: Yup.string().required('Password is required'),
 });
 
 interface FormValues {
-    name: string;
+    fullname: string;
+    username: string;
     email: string;
     password: string;
     confirm: string;
 }
 
-const onSubmit = async (values: FormValues, { setSubmitting, setErrors }: any): Promise<void> => {
-    try {
-        console.log(values);
-        // here you can call your api
-        setSubmitting(false);
-    } catch (error) {
-        setSubmitting(false);
-        setErrors(error);
-    }
-};
+export const SignUp: React.FC = () => {
+    const navigate = useNavigate();
 
-export const SignUp = () => {
-    return (
+    const [register, { isLoading }] = useRegisterMutation();
+    const dispatch = useDispatch();
+
+    const onSubmit = async (values: FormValues, { setSubmitting, setErrors }: any): Promise<void> => {
+        try {
+            console.log(values);
+
+            const response: ApiResponse<AuthResponse> = await register({
+                email: values.email,
+                password: values.password,
+                fullname: values.fullname,
+                username: values.username,
+            });
+
+            if (response.data) {
+                console.log('Response Data', response.data);
+                const userData = response.data;
+                dispatch(setCredentials({ email: values.email, token: userData.accessToken }));
+
+                navigate('/');
+            } else {
+                setErrors(response.error);
+            }
+            setSubmitting(false);
+        } catch (error) {
+            setSubmitting(false);
+            setErrors(error);
+        }
+    };
+    const content = isLoading ? (
+        <section className="login min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="w-full max-w-md p-4 bg-white rounded-md shadow-md">
+                <h1>Loading...</h1>
+            </div>
+        </section>
+    ) : (
         <div className="flex h-screen justify-center items-center">
             <div className="w-9/12 ">
                 <div className="flex border bg-white rounded-lg shadow-lg mx-auto max-w-sm lg:max-w-4xl">
@@ -71,7 +105,8 @@ export const SignUp = () => {
                         </div>
                         <Formik
                             initialValues={{
-                                name: '',
+                                fullname: '',
+                                username: '',
                                 email: '',
                                 password: '',
                                 confirm: '',
@@ -85,9 +120,19 @@ export const SignUp = () => {
                                 <div className="mt-4">
                                     <Field
                                         type="text"
-                                        id="name"
-                                        name="name"
+                                        id="fullname"
+                                        name="fullname"
                                         placeholder="Full Name"
+                                        className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
+                                    />
+                                    <ErrorMessage name="name" component="div" className="text-red-500  flex items-start" />
+                                </div>
+                                <div className="mt-4">
+                                    <Field
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        placeholder="User Name"
                                         className="bg-gray-200 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
                                     />
                                     <ErrorMessage name="name" component="div" className="text-red-500  flex items-start" />
@@ -132,9 +177,9 @@ export const SignUp = () => {
 
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 md:w-1/4"></span>
-                            <a href="#r" className="text-xs text-gray-500 uppercase">
+                            <Link to="/login" className="text-xs text-gray-500 uppercase">
                                 or sign in
-                            </a>
+                            </Link>
                             <span className="border-b w-1/5 md:w-1/4"></span>
                         </div>
                     </div>
@@ -142,4 +187,6 @@ export const SignUp = () => {
             </div>
         </div>
     );
+
+    return content;
 };

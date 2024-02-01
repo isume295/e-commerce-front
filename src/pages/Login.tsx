@@ -1,7 +1,12 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useLoginMutation } from '../redux/auth/authApiSlice';
+import { AuthResponse } from '../types/authresponse';
+import { setCredentials } from '../redux/auth/authSlice';
+import { ApiResponse } from '../types/api_response';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required'),
@@ -13,19 +18,44 @@ interface FormValues {
     password: string;
 }
 
-const onSubmit = async (values: FormValues, { setSubmitting, setErrors }: any): Promise<void> => {
-    try {
-        console.log(values);
-        // here you can call your api
-        setSubmitting(false);
-    } catch (error) {
-        setSubmitting(false);
-        setErrors(error);
-    }
-};
+export const Login: React.FC = () => {
+    const navigate = useNavigate();
 
-export const Login = () => {
-    return (
+    const [login, { isLoading }] = useLoginMutation();
+    const dispatch = useDispatch();
+
+    const onSubmit = async (values: FormValues, { setSubmitting, setErrors }: any): Promise<void> => {
+        try {
+            console.log(values);
+
+            const response: ApiResponse<AuthResponse> = await login({
+                email: values.email,
+                password: values.password,
+            });
+
+            if (response.data) {
+                console.log('Response Data', response.data);
+                const userData = response.data;
+                dispatch(setCredentials({ email: values.email, token: userData.accessToken }));
+
+                navigate('/');
+            } else {
+                setErrors(response.error);
+            }
+            setSubmitting(false);
+        } catch (error) {
+            setSubmitting(false);
+            setErrors(error);
+        }
+    };
+
+    const content = isLoading ? (
+        <section className="login min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="w-full max-w-md p-4 bg-white rounded-md shadow-md">
+                <h1>Loading...</h1>
+            </div>
+        </section>
+    ) : (
         <div className="flex h-screen justify-center items-center">
             <div className="w-9/12 ">
                 <div className="flex border bg-white rounded-lg shadow-lg mx-auto max-w-sm lg:max-w-4xl">
@@ -114,7 +144,7 @@ export const Login = () => {
 
                         <div className="mt-4 flex items-center justify-between">
                             <span className="border-b w-1/5 md:w-1/4"></span>
-                            <Link to="/login" className="text-xs text-gray-500 uppercase">
+                            <Link to="/signup" className="text-xs text-gray-500 uppercase">
                                 or sign up
                             </Link>
                             <span className="border-b w-1/5 md:w-1/4"></span>
@@ -124,4 +154,6 @@ export const Login = () => {
             </div>
         </div>
     );
+
+    return content;
 };
